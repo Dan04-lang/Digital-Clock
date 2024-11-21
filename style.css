@@ -1,0 +1,186 @@
+@font-face {
+    font-family: "FX_LED";
+    src: url("fonts/FX_LED.TTF");
+}
+
+@font-face {
+    font-family: "Hack";
+    src: url("fonts/Hack-Bold.ttf");
+}
+
+body {
+    background-color: #000;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    font-family: "Hack", sans-serif;
+}
+
+.digital-clock {
+    background-color: black;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem;
+    border-radius: 20px;
+    border: 2px solid #444;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    width: 60vw;
+    max-width: 700px;
+    height: 30rem;
+    position: relative;
+}
+
+.time {
+    font-family: "Digital 7", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+}
+
+.hour,
+.min,
+.dot {
+    display: inline-block;
+    font-size: 12rem;
+    margin: 0 1rem;
+}
+
+.week {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #2d2d2d;
+    font-weight: bold;
+    font-family: "Hack";
+    margin-bottom: 1rem;
+}
+
+.week div {
+    padding: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.week .active {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #2d2d2d;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.timezone-selector {
+    margin-top: 2rem;
+    color: white;
+    font-family: "Hack", sans-serif;
+    font-weight: bold;
+}
+
+#timezone {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #2d2d2d;
+    background-color: black;
+    color: white;
+}
+
+.time-format {
+    margin-top: 1rem;
+    color: white;
+    font-family: "Hack", sans-serif;
+    font-weight: bold;
+}
+
+#time-format {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #2d2d2d;
+    background-color: black;
+    color: white;
+}
+
+.period {
+    font-size: 2rem;
+    margin-top: -2rem;
+    color: white;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.date {
+    font-size: 2rem;
+    color: #fff;
+    margin-top: 1rem;
+    opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+    .time .hour, .time .min {
+        font-size: 8rem;
+    }
+    .digital-clock {
+        width: 80vw;
+        height: 25rem;
+    }
+}
+
+.time .hour, .time .min {
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.time .hour, .time .min {
+    animation: glow 1s infinite alternate;
+}
+
+.week div {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.week .active {
+    background-color: #000;
+    transform: scale(1.1);
+    animation: bounce 0.3s ease-in-out;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px #fff, 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #f39c12;
+    }
+    100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #f39c12, 0 0 20px #f39c12;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.week div:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+#timezone:focus, #time-format:focus {
+    border-color: #f39c12;
+    outline: none;
+}
